@@ -1,15 +1,20 @@
 
 type Mods = Record<string, boolean | string>
 
-export function classNames(cls: string, mods: Mods = {}, additional: string[] = []): string {
-    return [
-        cls,
-        ...additional.filter(Boolean),
-        ...Object.entries(mods)
+export function classNames(...args : (string | Mods | string[])[]): string {
+    const result = []
+    for (const arg of args) { 
+        if (typeof arg === 'string' || typeof arg === 'number') {
+            result.push(arg)
+        } else if (Array.isArray(arg)) {
+            result.push(...arg.filter(Boolean))
+        } else if (typeof arg === 'object') {
+            result.push(...Object.entries(arg)
             .filter(([className, value]) => Boolean(value))
-            .map(([className]) => className)
-    ]
-        .join(' ');
+            .map(([className]) => className))
+        }
+    }
+    return result.join(' ')
 }
 
 
