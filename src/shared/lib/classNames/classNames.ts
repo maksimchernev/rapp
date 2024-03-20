@@ -1,7 +1,7 @@
 
 type Mods = Record<string, boolean | string>
 
-export function classNames(...args : (string | Mods | string[])[]): string {
+export default function cn(...args : (string | Mods | string[])[]): string {
     const result = []
     for (const arg of args) { 
         if (typeof arg === 'string' || typeof arg === 'number') {

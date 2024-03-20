@@ -1,4 +1,4 @@
-import { classNames } from "shared/lib/classNames/classNames";
+import cn from "shared/lib/classNames/classNames";
 import cls from "./AppLink.module.scss";
 import { Link, LinkProps } from "react-router-dom";
 import { FC } from "react";
@@ -18,7 +18,7 @@ export const AppLink: FC<AppLinkProps> = (props) => {
   const { to, className, children, theme = AppLinkTheme.PRIMARY, ...other } = props;
 
   return (
-    <Link to={to} className={classNames(cls.AppLink, cls[theme], className)} {...other}>
+    <Link to={to} className={cn(cls.AppLink, cls[theme], className)} {...other}>
       {children}
     </Link>
   );
