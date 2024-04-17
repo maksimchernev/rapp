@@ -5,15 +5,17 @@ import { ThemeButton } from "shared/ui/Button/Button";
 import { useTranslation } from "react-i18next";
 
 interface ThemeSwitcherProps {
-  className?: string;
+	className?: string;
 }
 
 export const LanguageSwitcher = ({ className }: ThemeSwitcherProps) => {
-  const { t, i18n } = useTranslation();
+	const { t, i18n } = useTranslation();
 
-  return (
-    <Button theme={ThemeButton.CLEAR} className={cn(styles.themeSwitcher, className)} onClick={() => i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru")}>
-      {t("Язык")}
-    </Button>
-  );
+	const toggleLanguage = () => i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru");
+
+	return (
+		<Button theme={ThemeButton.CLEAR} className={cn(styles.themeSwitcher, className)} onClick={toggleLanguage}>
+			{t("Язык")}
+		</Button>
+	);
 };
